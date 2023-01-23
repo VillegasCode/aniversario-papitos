@@ -14,6 +14,7 @@ let mostrarTiempo = document.getElementById("t-restante");
 let ocultarBoton = document.getElementById("reiniciar").style.visibility = 'hidden';
 let tiempoJuntos = document.getElementById("tiempoAtuLado");
 let estadoDelJuego = document.getElementById("statusOFgame");
+let btnReiniciar = document.getElementById('reiniciar');
 
 
 //Creating variables to count time
@@ -105,6 +106,7 @@ function bloquearTarjetas() {
         tarjetaBloqueada.disabled = true;
     }
     cambiarPerderCSS();
+    btnReiniciar.innerHTML = `PERDISTE ¿Revancha?`;
     //Obtenemos el botón llamado "reiniciar" y lo volvemos visible cada vez que las tarjetas se bloqueen
     let mostrarBoton = document.getElementById("reiniciar").style.visibility = 'visible';
 }
@@ -171,6 +173,8 @@ function destapar(id) {
                 mostrarMovimientos.innerHTML = `Movimientos: ${movimientos} 🤟😎`;
                 //Play to audio when myself won
                 winAudio.play();
+                //CAMBIAR MENSAJE EN EL BOTÓN SI EL USUARIO GANÓ
+                btnReiniciar.innerHTML = `¡GANASTE!<br>¿Volver a Jugar?`;
                 cambiarGanarCSS();
                 mostrarBoton = document.getElementById('reiniciar').style.visibility = 'visible';
             }
