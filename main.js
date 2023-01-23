@@ -15,6 +15,7 @@ let ocultarBoton = document.getElementById("reiniciar").style.visibility = 'hidd
 let tiempoJuntos = document.getElementById("tiempoAtuLado");
 let estadoDelJuego = document.getElementById("statusOFgame");
 
+
 //Creating variables to count time
 let timer = 35;
 let temporizador = false;
@@ -71,6 +72,28 @@ function contarTiempo() {
     },1000);
 }
 
+
+//Function para CAMBIAR CSS cuando timer == 0 o se bloqueen las tarjetas
+function cambiarPerderCSS(){
+    //Cambiamos la hoja de estilo css cada vez que pierden o ganen porque el tiempo se acabó
+    var styles = 'perder.css';
+    var newSS=document.createElement('link');
+    newSS.rel='stylesheet';
+    newSS.type='text/css';
+    newSS.href= styles;
+    document.getElementsByTagName("head")[0].appendChild(newSS);
+}
+
+function cambiarGanarCSS(){
+    //Cambiamos la hoja de estilo css cada vez que pierden o ganen porque el tiempo se acabó
+    var styles = 'ganar.css';
+    var newSS=document.createElement('link');
+    newSS.rel='stylesheet';
+    newSS.type='text/css';
+    newSS.href= styles;
+    document.getElementsByTagName("head")[0].appendChild(newSS);
+}
+
 //Function bloquearTarjetas
 function bloquearTarjetas() {
     for (let i=0; i<=19; i++) {
@@ -81,6 +104,7 @@ function bloquearTarjetas() {
         //Bloqueamos o deshabilitamos la tarjeta
         tarjetaBloqueada.disabled = true;
     }
+    cambiarPerderCSS();
     //Obtenemos el botón llamado "reiniciar" y lo volvemos visible cada vez que las tarjetas se bloqueen
     let mostrarBoton = document.getElementById("reiniciar").style.visibility = 'visible';
 }
@@ -142,11 +166,12 @@ function destapar(id) {
                 //Stop the counter
                 clearInterval(tiempoRegresivoId);
                 mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 👏`;
-                mostrarTiempo.innerHTML = `¡GANARON! ⏰ SOBRÓ ${timer} segundos<BR>Un logro mío es un logro tuyo mi amor`;
-                estadoDelJuego.innerHTML = `Feliz Aniversario Papitos❤️🥳¡LOS AMO! 😘`;
+                mostrarTiempo.innerHTML = `¡GANARON! ⏰ SOBRÓ ${timer} segundos<BR>porque un logro mío es un logro tuyo mi amor`;
+                estadoDelJuego.innerHTML = `Feliz Aniversario Papitos❤️🥳¡GANARON!<br>Ustedes lo pueden todo 😘`;
                 mostrarMovimientos.innerHTML = `Movimientos: ${movimientos} 🤟😎`;
                 //Play to audio when myself won
                 winAudio.play();
+                cambiarGanarCSS();
                 mostrarBoton = document.getElementById('reiniciar').style.visibility = 'visible';
             }
         } else {
