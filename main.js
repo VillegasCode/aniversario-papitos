@@ -34,10 +34,10 @@ let rightAudio = new Audio('./sounds/right.wav');
 let wrongAudio = new Audio('./sounds/wrong.wav');
 
 //Create un array with duplicate numbers of total of tales
-let numeros = [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10];
+let numeros = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
 
 //We generate random numbers with arrow function
-numeros = numeros.sort(()=>{return Math.random()-0.5});
+numeros = numeros.sort(() => { return Math.random() - 0.5 });
 //Write in console the numeros array of random way
 console.log(numeros);
 
@@ -50,18 +50,26 @@ let fecha_aniversario = new Date("1990/01/20");
 let hoy = new Date(mes_actual + "/" + dia_actual + "/" + anio_actual);
 
 let diferenciaTiempo = hoy.getFullYear() - fecha_aniversario.getFullYear();
-    let mes = mes_actual - parseInt(fecha_aniversario.getMonth() + 1);
-    let dia = dia_actual - fecha_aniversario.getDate();
-    
-    if (mes < 0 || (mes === 0 && hoy.getDate() < fecha_aniversario.getDate())){
-        diferenciaTiempo--;
-        mes = 12 + mes;
-    }
-    tiempoJuntos.innerHTML = `${diferenciaTiempo} años con ${mes} meses y ${dia} días juntos😍, ningún día es fácil pero un amor tan bonito lo puede todo 👫‍<br>¡LOS AMO!`;
+let mes = mes_actual - parseInt(fecha_aniversario.getMonth() + 1);
+let dia = dia_actual - fecha_aniversario.getDate();
+
+//Setting months if is necessary
+if (mes < 0 || (mes === 0 && hoy.getDate() < fecha_aniversario.getDate())) {
+    diferenciaTiempo--;
+    mes = 12 + mes;
+}
+
+//Setting days and months if is necessary
+if (dia < 0) {
+    mes--;
+    let ultimoDiaMesAnterior = new Date(hoy.getFullYear(), hoy.getMonth(), 0).getDate();
+    dia += ultimoDiaMesAnterior;
+}
+tiempoJuntos.innerHTML = `${diferenciaTiempo} años con ${mes} meses y ${dia} días juntos😍, ningún día es fácil pero un amor tan bonito lo puede todo 👫‍<br>¡LOS AMO!`;
 
 //Function to count time
 function contarTiempo() {
-    tiempoRegresivoId = setInterval(()=>{
+    tiempoRegresivoId = setInterval(() => {
         timer--;
         mostrarTiempo.innerHTML = `Tiempo: ${timer} segundos`;
         if (timer == 0) {
@@ -70,34 +78,34 @@ function contarTiempo() {
             loseAudio.play();
             estadoDelJuego.innerHTML = `Feliz Aniversario Papitos❤️, no todo sale perfecto,🤗solo hay que volver a intentarlo 😘`;
         }
-    },1000);
+    }, 1000);
 }
 
 
 //Function para CAMBIAR CSS cuando timer == 0 o se bloqueen las tarjetas
-function cambiarPerderCSS(){
+function cambiarPerderCSS() {
     //Cambiamos la hoja de estilo css cada vez que pierden o ganen porque el tiempo se acabó
     var styles = 'perder.css';
-    var newSS=document.createElement('link');
-    newSS.rel='stylesheet';
-    newSS.type='text/css';
-    newSS.href= styles;
+    var newSS = document.createElement('link');
+    newSS.rel = 'stylesheet';
+    newSS.type = 'text/css';
+    newSS.href = styles;
     document.getElementsByTagName("head")[0].appendChild(newSS);
 }
 
-function cambiarGanarCSS(){
+function cambiarGanarCSS() {
     //Cambiamos la hoja de estilo css cada vez que pierden o ganen porque el tiempo se acabó
     var styles = 'ganar.css';
-    var newSS=document.createElement('link');
-    newSS.rel='stylesheet';
-    newSS.type='text/css';
-    newSS.href= styles;
+    var newSS = document.createElement('link');
+    newSS.rel = 'stylesheet';
+    newSS.type = 'text/css';
+    newSS.href = styles;
     document.getElementsByTagName("head")[0].appendChild(newSS);
 }
 
 //Function bloquearTarjetas
 function bloquearTarjetas() {
-    for (let i=0; i<=19; i++) {
+    for (let i = 0; i <= 19; i++) {
         //Obtenemos el objeto del index.html
         let tarjetaBloqueada = document.getElementById(i);
         //Al objeto le cambiamos su estado para que muestre la figura
@@ -128,7 +136,7 @@ function destapar(id) {
         tarjetaUNO = document.getElementById(id);
         //First button pressed id captures
         primerResultado = numeros[id];
-        
+
         tarjetaUNO.innerHTML = `<img src="./images/${primerResultado}.png">`;
 
         //Disabling the first button pressed
@@ -153,7 +161,7 @@ function destapar(id) {
         //Increase movements
         movimientos++;
         mostrarMovimientos.innerHTML = `Movimientos: ${movimientos}`;
-    
+
         //Compare primerResultado with segundoResultado are match
         if (primerResultado == segundoResultado) {
             //Reset counter of tarjetasDestapadas
@@ -164,7 +172,7 @@ function destapar(id) {
             //Increase hits
             aciertos++;
             mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 👏`;
-            if (aciertos == 10){
+            if (aciertos == 10) {
                 //Stop the counter
                 clearInterval(tiempoRegresivoId);
                 mostrarAciertos.innerHTML = `Aciertos: ${aciertos} 👏`;
@@ -180,27 +188,27 @@ function destapar(id) {
             }
         } else {
             //If primerResultado is diferent to segundoResultado then show for a moment their values and come back to hidden
-        setTimeout(()=>{
-            //Come back to their status enabled 'cause they are diferent
-            tarjetaUNO.disabled = false;
-            tarjeta2.disabled = false;
-            
-            //Come back to show their cover cause are diferent
-            tarjetaUNO.innerHTML = `<img class="portada" src="./images/cover.png">`;
-            tarjeta2.innerHTML = `<img class="portada" src="./images/cover.png">`;
-            console.log(tarjetaUNO);
-            console.log(tarjeta2);
-            
-            //Come back tarjetasDestapadas to CERO
-            tarjetasDestapadas = 0;
-            //Play audio of wrong
-            wrongAudio.play();
-            //If timer is CERO then call to bloquearTarjetas function
-            if (timer == 0) {
-                bloquearTarjetas();
-            }
-        }, 1100);
-        
+            setTimeout(() => {
+                //Come back to their status enabled 'cause they are diferent
+                tarjetaUNO.disabled = false;
+                tarjeta2.disabled = false;
+
+                //Come back to show their cover cause are diferent
+                tarjetaUNO.innerHTML = `<img class="portada" src="./images/cover.png">`;
+                tarjeta2.innerHTML = `<img class="portada" src="./images/cover.png">`;
+                console.log(tarjetaUNO);
+                console.log(tarjeta2);
+
+                //Come back tarjetasDestapadas to CERO
+                tarjetasDestapadas = 0;
+                //Play audio of wrong
+                wrongAudio.play();
+                //If timer is CERO then call to bloquearTarjetas function
+                if (timer == 0) {
+                    bloquearTarjetas();
+                }
+            }, 1100);
+
+        }
     }
-}
 }
