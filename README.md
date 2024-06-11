@@ -2,7 +2,7 @@
   <h1>Wedding Anniversary Memory Game</h1>
   <img src="https://github.com/VillegasCode/aniversario-papitos/blob/main/images/app-wedding-anniversary-memory-game.png" width="900" alt="Wedding Anniversary Memory Game" />
 
-  <a href="https://villegascode.github.io/aniversario-papitos/" target="_blank">Try Wedding Anniversary Memory Game click here</a>{:target="_blank"}
+  <a href="https://villegascode.github.io/aniversario-papitos/" target="_blank">Try the Wedding Anniversary Memory Game click here</a>
 </div>
 
 <div align="center">
@@ -27,7 +27,7 @@ If we won then the game show us a button with a message "¡GANASTE! ¿Volver a j
 The page's backgrounds change according to state of the game, likewise the background of the tiles changes.
 
 <p align="center">
-<i>Loved the game? Please consider <a href="https://www.paypal.me/villegasalexander" target="_blank">donating 💸</a>{:target="_blank"} to support its continuous<br/> improvement and development!</i>
+<i>Loved the game? Please consider <a href="https://www.paypal.me/villegasalexander" target="_blank">donating 💸</a> to support its continuous<br/> improvement and development!</i>
 </p>
 
 ## :rocket: Main Technologies ##
@@ -43,7 +43,7 @@ The page's backgrounds change according to state of the game, likewise the backg
 
 ## :white_check_mark: Requirements ##
 
-None, just click on the following link: <a href="https://villegascode.github.io/Pokemon-Memory-Game/" target="_blank">Try the Wedding Anniversary Memory Game click here</a>
+None, just click on the following link: <a href="https://villegascode.github.io/aniversario-papitos/" target="_blank">Try the Wedding Anniversary Memory Game click here</a>
 
 ## :memo: License ##
 
