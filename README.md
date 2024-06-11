@@ -1,5 +1,5 @@
 <div align="center" id="top">
-  <h1>Pokemon Memory Game</h1>
+  <h1>Wedding Anniversary Memory Game</h1>
   <img src="https://github.com/VillegasCode/aniversario-papitos/blob/main/images/app-wedding-anniversary-memory-game.png" width="900" alt="Wedding Anniversary Memory Game" />
 
   <a href="https://villegascode.github.io/aniversario-papitos/" target="_blank">Try Wedding Anniversary Memory Game click here</a>{:target="_blank"}
