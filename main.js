@@ -3,7 +3,7 @@ let tarjetaUNO = null;
 let tarjeta2 = null;
 let tarjetasDestapadas = 0;
 
-//Creating variables to compare first result of a tale with second result fo a tale
+//Creating variables to compare first result of a tale with second result of a tale
 let primerResultado = null;
 let segundoResultado = null;
 
@@ -81,7 +81,6 @@ function contarTiempo() {
     }, 1000);
 }
 
-
 //Function para CAMBIAR CSS cuando timer == 0 o se bloqueen las tarjetas
 function cambiarPerderCSS() {
     //Cambiamos la hoja de estilo css cada vez que pierden o ganen porque el tiempo se acabó
@@ -94,7 +93,7 @@ function cambiarPerderCSS() {
 }
 
 function cambiarGanarCSS() {
-    //Cambiamos la hoja de estilo css cada vez que pierden o ganen porque el tiempo se acabó
+    //Cambiamos la hoja de estilo css cada vez que ganen
     var styles = 'ganar.css';
     var newSS = document.createElement('link');
     newSS.rel = 'stylesheet';
@@ -136,8 +135,8 @@ function destapar(id) {
         tarjetaUNO = document.getElementById(id);
         //First button pressed id captures
         primerResultado = numeros[id];
-
-        tarjetaUNO.innerHTML = `<img src="./images/${primerResultado}.png">`;
+        //Cambiar el color de fondo de las tarjetas destapadas cambiando la clase del botón
+        tarjetaUNO.innerHTML = `<button class="botonDestapado"><img src="./images/${primerResultado}.png">`;
 
         //Disabling the first button pressed
         tarjetaUNO.disabled = true;
@@ -150,7 +149,8 @@ function destapar(id) {
         tarjeta2 = document.getElementById(id);
         //If second button is pressed then id is captured
         segundoResultado = numeros[id];
-        tarjeta2.innerHTML = `<img src="./images/${segundoResultado}.png">`;
+        //Cambiar el color de fondo de las tarjetas destapadas cambiando la clase del botón
+        tarjeta2.innerHTML = `<button class="botonDestapado"><img src="./images/${segundoResultado}.png">`;
 
         //Disabling second button
         tarjeta2.disabled = true;
